@@ -11,5 +11,6 @@ $application = new Application();
 
 $application->add(new \KoalityEngine\Cli\Command\User\InviteCommand());
 $application->add(new \KoalityEngine\Cli\Command\Project\ListCommand());
+$application->add(new \KoalityEngine\Cli\Command\Project\UsersCommand());
 
 $application->run();

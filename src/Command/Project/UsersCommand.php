@@ -6,27 +6,29 @@ use KoalityEngine\Cli\Command\KoalityEngineCommand;
 use Leankoala\ApiClient\Client;
 use Leankoala\ApiClient\Repository\Entity\ProjectRepository;
 use Symfony\Component\Console\Helper\Table;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class ListCommand
  *
- * List all projects of the given user.
+ * List all users of the given project.
  *
  * @package KoalityEngine\Cli\Command\Project
  *
  * @author Nils Langner <nils.langner@leankoala.com>
  * created 2021-11-21
  */
-class ListCommand extends KoalityEngineCommand
+class UsersCommand extends KoalityEngineCommand
 {
-    protected static $defaultName = 'project:list';
+    protected static $defaultName = 'project:users';
 
     protected function configure()
     {
         parent::configure();
-        $this->setHelp('The list command will show all projects for the given user.');
+        $this->setHelp('The list all users of the project.');
+        $this->addArgument('project', InputArgument::REQUIRED, 'The project id');
     }
 
     protected function doExecution(Client $client, InputInterface $input, OutputInterface $output)
@@ -34,23 +36,23 @@ class ListCommand extends KoalityEngineCommand
         /** @var ProjectRepository $repo */
         $repo = $client->getRepository('project');
 
-        $currentUser = $client->getClusterUser();
+        $project = $input->getArgument('project');
 
-        $result = $repo->search(['user' => $currentUser['id']]);
+        $result = $repo->getUsers($project, []);
 
         $rows = [];
 
-        foreach ($result['projects'] as $project) {
+        foreach ($result['users'] as $user) {
             $rows[] = [
-                $project['id'],
-                $project['name'],
-                $project['role']['name']
+                $user['id'],
+                strtolower($user['email']),
+                $user['role']['name']
             ];
         }
 
         $table = new Table($output);
 
-        $table->setHeaders(['ID', 'Name', 'Role'])
+        $table->setHeaders(['ID', 'Email', 'Role'])
             ->setRows($rows);
 
         $table->render();
