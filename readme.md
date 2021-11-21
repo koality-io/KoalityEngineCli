@@ -4,12 +4,32 @@ This command line interface helps to run API requests for koality.io on the comm
 
 **WARNING**: This is the alpha version of the CLI tool for the KoalityEngine used by www.leankoala.com, www.koality.io and platform360.io. Please only use it if the team of koality.io supports you. 
 
-## Usage
+## Install
 
-Copy the `.env.example` file to `.env` and enter your koality.io credentials.
+
+```shell
+composer install
+cp .env.example .env
+```
+
+Enter your koality.io credentials into `.env`.
+
+## Usage
 
 ```shell
 php bin/engine.php <command>
+```
+
+To get a list of avilanle a command run
+
+```shell
+php bin/engine.php list
+```
+
+To get help on a command run
+
+```shell
+php bin/engine.php <command> -h
 ```
 
 ## Commands
