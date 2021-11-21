@@ -39,6 +39,9 @@ New commands will be added everytime we or a customer needs an easy and automate
 - `project:list` list all projects for the given user.
 - `project:users` list all users for the given project.
 
+### Incident
+- `incident:list` list all incidents of the given project.
+
 ### User
 - `user:invite` invite a user to an existing project. [More about user commands.](docs/user.md)
 
