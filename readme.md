@@ -16,6 +16,8 @@ php bin/engine.php <command>
 
 New commands will be added everytime we or a customer needs an easy and automated way to do a koality action from  the command line. If something is missing contact `support@koality.io` or create it on your own.
 
+- `project:list` show all projects for the given user.
+
 - `user:invite` invite a user to an existing project. [More about user commands.](docs/user.md)
 
 ## API
