@@ -1,0 +1,22 @@
+{
+  "name": "koality/koalityenginecli",
+  "description": "description",
+  "minimum-stability": "dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "nils.langner",
+      "email": "email@example.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "KoalityEngine\\Cli\\": "src/"
+    }
+  },
+  "require": {
+    "leankoala/leankoalaclient": "dev-develop",
+    "symfony/console": "5.3.*",
+    "vlucas/phpdotenv": "v5.4.0"
+  }
+}
