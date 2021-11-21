@@ -6,11 +6,12 @@ Used to invite users to existing projects. If a user with the given email alread
 
 | Argument   | Description | Example | 
 |:----------- |:----------- |:--------|
-| Project Identifier      | The project identifier. Can be seen as first numeric parameter in the URL in koality.io or via `project:list`.       | 969
-| Invitee email address   | The email address of the person that should be invited.     | user@example.com
+| Project Identifier      | The project identifier. Can be seen as first numeric parameter in the URL in koality.io or via `project:list`. | 969
+| Invitee email address   | The email address of the person that should be invited. | user@example.com
+| Role of the invitee     | The role (user/admin/owner) of the invited person should receive. | owner
 
 ### Example
 
 ```shell
- php bin/engine.php user:invite 969 user@example.com
+ php bin/engine.php user:invite 969 user@example.com owner
 ```
