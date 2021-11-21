@@ -4,6 +4,7 @@ namespace KoalityEngine\Cli\Command;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Leankoala\ApiClient\Client;
+use Leankoala\ApiClient\Exception\BadRequestException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -44,8 +45,21 @@ abstract class KoalityEngineCommand extends Command
         try {
             $client = $this->getConnectedClient($input);
             $this->doExecution($client, $input, $output);
+        } catch (BadRequestException $exception) {
+            $output->writeln("\n<error>Error running API command (" . static::$defaultName . ")</error> \n" . $exception->getMessage());
+            if ($output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE) {
+                $output->writeln('Url:     ' . $exception->getUrl());
+                $output->writeln('Method:  ' . $exception->getMethod());
+                $output->writeln('Payload: ' . json_encode($exception->getData()));
+                $output->writeln('Response: ' . $exception->getResponse()->getBody());
+                return Command::FAILURE;
+            }
         } catch (\Exception $exception) {
-            $output->writeln("\n<error>Error running API command (" . static::$defaultName . ")</error> \n" . $exception->getMessage() . "\n");
+            if ($output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE) {
+                throw $exception;
+            } else {
+                $output->writeln("\n<error>Error running API command (" . static::$defaultName . ")</error> \n" . $exception->getMessage() . "\n");
+            }
             return Command::FAILURE;
         }
 
