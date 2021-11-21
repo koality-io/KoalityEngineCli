@@ -6,7 +6,6 @@ This command line interface helps to run API requests for koality.io on the comm
 
 ## Install
 
-
 ```shell
 composer install
 cp .env.example .env
@@ -20,7 +19,7 @@ Enter your koality.io credentials into `.env`.
 php bin/engine.php <command>
 ```
 
-To get a list of avilanle a command run
+To get a list of available commands run
 
 ```shell
 php bin/engine.php list
