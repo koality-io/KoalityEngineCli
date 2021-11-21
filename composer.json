@@ -15,6 +15,7 @@
     }
   },
   "require": {
+    "ext-json": "*",
     "leankoala/leankoalaclient": "dev-develop",
     "symfony/console": "5.3.*",
     "vlucas/phpdotenv": "v5.4.0"
