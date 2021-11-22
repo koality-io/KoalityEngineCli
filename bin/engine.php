@@ -9,11 +9,17 @@ $dotenv->load();
 
 $application = new Application();
 
+# User
 $application->add(new \KoalityEngine\Cli\Command\User\InviteCommand());
 
+# Incident
 $application->add(new \KoalityEngine\Cli\Command\Incident\ListCommand());
 
+# Project
 $application->add(new \KoalityEngine\Cli\Command\Project\ListCommand());
 $application->add(new \KoalityEngine\Cli\Command\Project\UsersCommand());
+
+# Crawler
+$application->add(new \KoalityEngine\Cli\Command\Crawl\ListProjectCommand());
 
 $application->run();

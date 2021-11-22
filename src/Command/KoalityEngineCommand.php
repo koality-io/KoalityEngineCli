@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class ApiCommand
+ * Class KoalityEngineCommand
  *
  *
  * @author Nils Langner <nils.langner@leankoala.com>

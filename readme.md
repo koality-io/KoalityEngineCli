@@ -45,6 +45,18 @@ New commands will be added everytime we or a customer needs an easy and automate
 ### User
 - `user:invite` invite a user to an existing project. [More about user commands.](docs/user.md)
 
+### Crawl
+- `crawl:list:project` show all crawls for a given project and system.
+
+## Output format
+
+Every command that produces structured output will create a nice ASCII table that is human-readable. As this output is not very handy for further tools to work with it is possible to switch the format to CSV by using the option `-o`.
+
+### Example
+```shell
+php bin/engine.php project:list -o csv
+```
+
 ## API
 
 The KoalityEngine follows an API first approach. That means that every that can be done via the koality.io tool can also be done via the API.

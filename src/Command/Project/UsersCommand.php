@@ -2,10 +2,9 @@
 
 namespace KoalityEngine\Cli\Command\Project;
 
-use KoalityEngine\Cli\Command\KoalityEngineCommand;
+use KoalityEngine\Cli\Command\KoalityEngineListCommand;
 use Leankoala\ApiClient\Client;
 use Leankoala\ApiClient\Repository\Entity\ProjectRepository;
-use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -20,7 +19,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @author Nils Langner <nils.langner@leankoala.com>
  * created 2021-11-21
  */
-class UsersCommand extends KoalityEngineCommand
+class UsersCommand extends KoalityEngineListCommand
 {
     protected static $defaultName = 'project:users';
 
@@ -50,11 +49,6 @@ class UsersCommand extends KoalityEngineCommand
             ];
         }
 
-        $table = new Table($output);
-
-        $table->setHeaders(['ID', 'Email', 'Role'])
-            ->setRows($rows);
-
-        $table->render();
+        $this->renderList($input, $output, ['ID', 'Email', 'Role'], $rows);
     }
 }

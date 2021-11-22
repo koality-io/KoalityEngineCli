@@ -2,10 +2,9 @@
 
 namespace KoalityEngine\Cli\Command\Incident;
 
-use KoalityEngine\Cli\Command\KoalityEngineCommand;
+use KoalityEngine\Cli\Command\KoalityEngineListCommand;
 use Leankoala\ApiClient\Client;
 use Leankoala\ApiClient\Repository\Entity\IncidentRepository;
-use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -20,13 +19,14 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @author Nils Langner <nils.langner@leankoala.com>
  * created 2021-11-21
  */
-class ListCommand extends KoalityEngineCommand
+class ListCommand extends KoalityEngineListCommand
 {
     protected static $defaultName = 'incident:list';
 
     protected function configure()
     {
         parent::configure();
+
         $this->setHelp('List all incidents of the given project.');
         $this->addArgument('project', InputArgument::REQUIRED, 'The project id.');
     }
@@ -49,11 +49,6 @@ class ListCommand extends KoalityEngineCommand
             ];
         }
 
-        $table = new Table($output);
-
-        $table->setHeaders(['Component', 'Tool', 'Message', 'Start date'])
-            ->setRows($rows);
-
-        $table->render();
+        $this->renderList($input, $output, ['Component', 'Tool', 'Message', 'Start date'], $rows);
     }
 }

@@ -2,10 +2,9 @@
 
 namespace KoalityEngine\Cli\Command\Project;
 
-use KoalityEngine\Cli\Command\KoalityEngineCommand;
+use KoalityEngine\Cli\Command\KoalityEngineListCommand;
 use Leankoala\ApiClient\Client;
 use Leankoala\ApiClient\Repository\Entity\ProjectRepository;
-use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -19,7 +18,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @author Nils Langner <nils.langner@leankoala.com>
  * created 2021-11-21
  */
-class ListCommand extends KoalityEngineCommand
+class ListCommand extends KoalityEngineListCommand
 {
     protected static $defaultName = 'project:list';
 
@@ -41,18 +40,22 @@ class ListCommand extends KoalityEngineCommand
         $rows = [];
 
         foreach ($result['projects'] as $project) {
+
+            $systems = "";
+            foreach ($project['systems'] as $system) {
+                $systems .= "- " . $system['name'] . " (" . $system['id'] . ") \n";
+            }
+
+            $systems = rtrim($systems, "\n");
+
             $rows[] = [
                 $project['id'],
                 $project['name'],
-                $project['role']['name']
+                $project['role']['name'],
+                $systems
             ];
         }
 
-        $table = new Table($output);
-
-        $table->setHeaders(['ID', 'Name', 'Role'])
-            ->setRows($rows);
-
-        $table->render();
+        $this->renderList($input, $output, ['ID', 'Name', 'Role', 'Systems'], $rows);
     }
 }
