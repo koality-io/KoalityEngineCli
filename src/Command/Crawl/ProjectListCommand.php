@@ -21,7 +21,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @author Nils Langner <nils.langner@leankoala.com>
  * created 2021-11-21
  */
-class ListProjectCommand extends KoalityEngineListCommand
+class ProjectListCommand extends KoalityEngineListCommand
 {
     protected static $defaultName = 'crawl:project:list';
 
