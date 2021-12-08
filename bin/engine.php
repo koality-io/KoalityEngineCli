@@ -20,6 +20,10 @@ $application->add(new \KoalityEngine\Cli\Command\Project\ListCommand());
 $application->add(new \KoalityEngine\Cli\Command\Project\UsersCommand());
 
 # Crawler
+$application->add(new \KoalityEngine\Cli\Command\Crawl\CollectionsListCommand());
+
 $application->add(new \KoalityEngine\Cli\Command\Crawl\ListProjectCommand());
+$application->add(new \KoalityEngine\Cli\Command\Crawl\CompanyListCommand());
+$application->add(new \KoalityEngine\Cli\Command\Crawl\CompanyRunCommand());
 
 $application->run();
