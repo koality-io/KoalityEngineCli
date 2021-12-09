@@ -11,6 +11,7 @@ $application = new Application();
 
 # User
 $application->add(new \KoalityEngine\Cli\Command\User\InviteCommand());
+$application->add(new \KoalityEngine\Cli\Command\User\DeleteCommand());
 
 # Incident
 $application->add(new \KoalityEngine\Cli\Command\Incident\ListCommand());

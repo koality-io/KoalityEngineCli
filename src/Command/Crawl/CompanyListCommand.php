@@ -55,6 +55,7 @@ class CompanyListCommand extends KoalityEngineListCommand
             $rows[] = [
                 $crawl['id'],
                 $crawl['name'],
+                $crawl['startpage'],
                 $crawl['crawl_depth'],
                 $crawl['success'],
                 $crawl['uncertain'],
@@ -64,6 +65,6 @@ class CompanyListCommand extends KoalityEngineListCommand
             ];
         }
 
-        $this->renderList($input, $output, ['ID', 'Name', 'Depth', 'Successful', 'Uncertain', 'Failed', 'Start Date', 'Status'], $rows);
+        $this->renderList($input, $output, ['ID', 'Name', 'Start page', 'Depth', 'Successful', 'Uncertain', 'Failed', 'Start Date', 'Status'], $rows);
     }
 }

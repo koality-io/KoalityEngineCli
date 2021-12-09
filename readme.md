@@ -43,7 +43,10 @@ New commands will be added everytime we or a customer needs an easy and automate
 - `incident:list` list all incidents of the given project.
 
 ### User
-- `user:invite` invite a user to an existing project. [More about user commands.](docs/user.md)
+- `user:invite` invite a user to an existing project. 
+- `user:delete` delete a user.
+
+[More about user commands.](docs/user.md)
 
 ### Crawl
 - `crawl:project:list` show all crawls for a given project and system.

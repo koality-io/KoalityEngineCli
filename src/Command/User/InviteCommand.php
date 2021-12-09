@@ -32,6 +32,9 @@ class InviteCommand extends KoalityEngineCommand
             ->addArgument('email', InputArgument::REQUIRED, 'The email address of the invitee.');
     }
 
+    /**
+     * @inheritDoc
+     */
     protected function doExecution(Client $client, InputInterface $input, OutputInterface $output)
     {
         /** @var InvitationRepository $repo */

@@ -401,12 +401,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/leankoala-gmbh/leankoala-client-php.git",
-                "reference": "24b83ae422b2afa2c1b00fded8623dde716e1ce0"
+                "reference": "4c26e85b12a97f37d7a7a7649d78bc69ddb9da18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leankoala-gmbh/leankoala-client-php/zipball/24b83ae422b2afa2c1b00fded8623dde716e1ce0",
-                "reference": "24b83ae422b2afa2c1b00fded8623dde716e1ce0",
+                "url": "https://api.github.com/repos/leankoala-gmbh/leankoala-client-php/zipball/4c26e85b12a97f37d7a7a7649d78bc69ddb9da18",
+                "reference": "4c26e85b12a97f37d7a7a7649d78bc69ddb9da18",
                 "shasum": ""
             },
             "require": {
@@ -424,7 +424,7 @@
                 "issues": "https://github.com/leankoala-gmbh/leankoala-client-php/issues",
                 "source": "https://github.com/leankoala-gmbh/leankoala-client-php/tree/develop"
             },
-            "time": "2021-11-21T11:41:50+00:00"
+            "time": "2021-12-09T16:08:40+00:00"
         },
         {
             "name": "phpoption/phpoption",
