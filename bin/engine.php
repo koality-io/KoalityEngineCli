@@ -13,6 +13,9 @@ $application = new Application();
 $application->add(new \KoalityEngine\Cli\Command\User\InviteCommand());
 $application->add(new \KoalityEngine\Cli\Command\User\DeleteCommand());
 
+# Subscription
+$application->add(new \KoalityEngine\Cli\Command\Subscription\PlanSetCommand());
+
 # Incident
 $application->add(new \KoalityEngine\Cli\Command\Incident\ListCommand());
 

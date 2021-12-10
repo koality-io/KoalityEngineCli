@@ -55,6 +55,9 @@ New commands will be added everytime we or a customer needs an easy and automate
 
 - `crawl:company:run` run a crawl for a given company.
 
+### Subscription
+- `subscription:plan:set` set the subscription plan for the given user (**needs provider rights**).
+
 ## Output format
 
 Every command that produces structured output will create a nice ASCII table that is human-readable. As this output is not very handy for further tools to work with it is possible to switch the format to CSV by using the option `-o`.
