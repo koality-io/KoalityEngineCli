@@ -53,6 +53,9 @@ New commands will be added everytime we or a customer needs an easy and automate
 - `crawl:company:list` show all crawls for a given company.
 
 
+- `crawl:crawl:show` run a single crawl.
+
+
 - `crawl:company:run` run a crawl for a given company.
 
 ### Subscription

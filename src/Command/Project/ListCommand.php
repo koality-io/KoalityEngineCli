@@ -28,7 +28,7 @@ class ListCommand extends KoalityEngineListCommand
         $this->setHelp('The list command will show all projects for the given user.');
     }
 
-    protected function doExecution(Client $client, InputInterface $input, OutputInterface $output)
+    protected function doListCreation(Client $client, InputInterface $input, OutputInterface $output)
     {
         /** @var ProjectRepository $repo */
         $repo = $client->getRepository('project');
@@ -56,6 +56,6 @@ class ListCommand extends KoalityEngineListCommand
             ];
         }
 
-        $this->renderList($input, $output, ['ID', 'Name', 'Role', 'Systems'], $rows);
+        $this->renderList(['ID', 'Name', 'Role', 'Systems'], $rows);
     }
 }

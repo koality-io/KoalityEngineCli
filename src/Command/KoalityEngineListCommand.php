@@ -2,6 +2,7 @@
 
 namespace KoalityEngine\Cli\Command;
 
+use Leankoala\ApiClient\Client;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -25,15 +26,27 @@ abstract class KoalityEngineListCommand extends KoalityEngineCommand
     const CSV_DELIMITER = ';';
     const CSV_ENCLOSURE = '"';
 
+    private $input;
+    private $output;
+
     /**
      * @inheritDoc
      */
     protected function configure()
     {
         parent::configure();
-
         $this->addOption(self::OPTION_OUTPUT_FORMAT, 'o', InputOption::VALUE_OPTIONAL, 'Output format for the result. Possible formats are table and csv.', self::FORMAT_TABLE);
     }
+
+    protected function doExecution(Client $client, InputInterface $input, OutputInterface $output)
+    {
+        $this->output = $output;
+        $this->input = $input;
+
+        $this->doListCreation($client, $input, $output);
+    }
+
+    abstract protected function doListCreation(Client $client, InputInterface $input, OutputInterface $output);
 
     /**
      * Render a list in different formats.
@@ -45,17 +58,17 @@ abstract class KoalityEngineListCommand extends KoalityEngineCommand
      * @param array $header
      * @param array $rows
      */
-    protected function renderList(InputInterface $input, OutputInterface $output, array $header, array $rows)
+    protected function renderList(array $header, array $rows)
     {
-        switch (strtolower($input->getOption(self::OPTION_OUTPUT_FORMAT))) {
+        switch (strtolower($this->input->getOption(self::OPTION_OUTPUT_FORMAT))) {
             case self::FORMAT_TABLE:
-                $this->renderTable($output, $header, $rows);
+                $this->renderTable($this->output, $header, $rows);
                 break;
             case self::FORMAT_CSV:
-                $this->renderCsv($output, $header, $rows);
+                $this->renderCsv($this->output, $header, $rows);
                 break;
             default:
-                throw new \RuntimeException('No output format "' . $input->getOption(self::OPTION_OUTPUT_FORMAT) . '" found. Use table or csv.');
+                throw new \RuntimeException('No output format "' . $this->input->getOption(self::OPTION_OUTPUT_FORMAT) . '" found. Use table or csv.');
         }
     }
 

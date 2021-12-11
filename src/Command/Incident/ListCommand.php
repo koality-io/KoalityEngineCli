@@ -31,7 +31,7 @@ class ListCommand extends KoalityEngineListCommand
         $this->addArgument('project', InputArgument::REQUIRED, 'The project id.');
     }
 
-    protected function doExecution(Client $client, InputInterface $input, OutputInterface $output)
+    protected function doListCreation(Client $client, InputInterface $input, OutputInterface $output)
     {
         /** @var IncidentRepository $repo */
         $repo = $client->getRepository('incident');
@@ -49,6 +49,6 @@ class ListCommand extends KoalityEngineListCommand
             ];
         }
 
-        $this->renderList($input, $output, ['Component', 'Tool', 'Message', 'Start date'], $rows);
+        $this->renderList(['Component', 'Tool', 'Message', 'Start date'], $rows);
     }
 }

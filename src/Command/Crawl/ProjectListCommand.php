@@ -43,7 +43,7 @@ class ProjectListCommand extends KoalityEngineListCommand
      * @throws NotConnectedException
      * @throws UnknownRepositoryException
      */
-    protected function doExecution(Client $client, InputInterface $input, OutputInterface $output)
+    protected function doListCreation(Client $client, InputInterface $input, OutputInterface $output)
     {
         /** @var CrawlerRepository $repo */
         $repo = $client->getRepository('crawler');
@@ -64,6 +64,6 @@ class ProjectListCommand extends KoalityEngineListCommand
             ];
         }
 
-        $this->renderList($input, $output, ['ID', 'Name', 'Depth', 'Successful', 'Failed', 'Start Date', 'Status'], $rows);
+        $this->renderList(['ID', 'Name', 'Depth', 'Successful', 'Failed', 'Start Date', 'Status'], $rows);
     }
 }

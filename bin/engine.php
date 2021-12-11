@@ -11,6 +11,7 @@ $application = new Application();
 
 # User
 $application->add(new \KoalityEngine\Cli\Command\User\InviteCommand());
+$application->add(new \KoalityEngine\Cli\Command\User\CreateCommand());
 $application->add(new \KoalityEngine\Cli\Command\User\DeleteCommand());
 
 # Subscription
@@ -24,6 +25,8 @@ $application->add(new \KoalityEngine\Cli\Command\Project\ListCommand());
 $application->add(new \KoalityEngine\Cli\Command\Project\UsersCommand());
 
 # Crawler
+$application->add(new \KoalityEngine\Cli\Command\Crawl\CrawlShowCommand());
+
 $application->add(new \KoalityEngine\Cli\Command\Crawl\CollectionsListCommand());
 
 $application->add(new \KoalityEngine\Cli\Command\Crawl\ProjectListCommand());

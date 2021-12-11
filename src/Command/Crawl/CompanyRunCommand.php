@@ -2,6 +2,7 @@
 
 namespace KoalityEngine\Cli\Command\Crawl;
 
+use KoalityEngine\Cli\Command\KoalityEngineCommand;
 use KoalityEngine\Cli\Command\KoalityEngineListCommand;
 use Leankoala\ApiClient\Client;
 use Leankoala\ApiClient\Repository\Entity\CrawlerRepository;
@@ -19,10 +20,13 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @author Nils Langner <nils.langner@leankoala.com>
  * created 2021-12-08
  */
-class CompanyRunCommand extends KoalityEngineListCommand
+class CompanyRunCommand extends KoalityEngineCommand
 {
     protected static $defaultName = 'crawl:company:run';
 
+    /**
+     * @inheritDoc
+     */
     protected function configure()
     {
         parent::configure();

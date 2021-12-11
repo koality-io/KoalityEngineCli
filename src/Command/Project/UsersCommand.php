@@ -30,7 +30,7 @@ class UsersCommand extends KoalityEngineListCommand
         $this->addArgument('project', InputArgument::REQUIRED, 'The project id');
     }
 
-    protected function doExecution(Client $client, InputInterface $input, OutputInterface $output)
+    protected function doListCreation(Client $client, InputInterface $input, OutputInterface $output)
     {
         /** @var ProjectRepository $repo */
         $repo = $client->getRepository('project');
@@ -49,6 +49,6 @@ class UsersCommand extends KoalityEngineListCommand
             ];
         }
 
-        $this->renderList($input, $output, ['ID', 'Email', 'Role'], $rows);
+        $this->renderList(['ID', 'Email', 'Role'], $rows);
     }
 }

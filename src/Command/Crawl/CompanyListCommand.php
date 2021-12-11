@@ -35,7 +35,7 @@ class CompanyListCommand extends KoalityEngineListCommand
     /**
      * @inheritDoc
      */
-    protected function doExecution(Client $client, InputInterface $input, OutputInterface $output)
+    protected function doListCreation(Client $client, InputInterface $input, OutputInterface $output)
     {
         /** @var CrawlerRepository $repo */
         $repo = $client->getRepository('crawler');
@@ -65,6 +65,6 @@ class CompanyListCommand extends KoalityEngineListCommand
             ];
         }
 
-        $this->renderList($input, $output, ['ID', 'Name', 'Start page', 'Depth', 'Successful', 'Uncertain', 'Failed', 'Start Date', 'Status'], $rows);
+        $this->renderList(['ID', 'Name', 'Start page', 'Depth', 'Successful', 'Uncertain', 'Failed', 'Start Date', 'Status'], $rows);
     }
 }

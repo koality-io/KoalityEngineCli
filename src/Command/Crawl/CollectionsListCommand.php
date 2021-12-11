@@ -34,7 +34,7 @@ class CollectionsListCommand extends KoalityEngineListCommand
     /**
      * @inheritDoc
      */
-    protected function doExecution(Client $client, InputInterface $input, OutputInterface $output)
+    protected function doListCreation(Client $client, InputInterface $input, OutputInterface $output)
     {
         /** @var CrawlerRepository $repo */
         $repo = $client->getRepository('crawler');
@@ -51,6 +51,6 @@ class CollectionsListCommand extends KoalityEngineListCommand
             ];
         }
 
-        $this->renderList($input, $output, ['ID', 'Name', 'Description'], $rows);
+        $this->renderList(['ID', 'Name', 'Description'], $rows);
     }
 }
