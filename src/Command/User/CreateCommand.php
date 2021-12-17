@@ -28,6 +28,8 @@ class CreateCommand extends KoalityEngineCommand
     const ARGUMENT_USER_PASSWORD = 'userPassword';
     const ARGUMENT_USER_EMAIL = 'userEmail';
 
+    const OPTION_USER_ACTIVATE = 'activate';
+
     protected function configure()
     {
         parent::configure();
@@ -36,7 +38,8 @@ class CreateCommand extends KoalityEngineCommand
             ->addArgument(self::ARGUMENT_APPLICATION_ID, InputArgument::REQUIRED, 'The application identifier (koality, threeSixty).')
             ->addArgument(self::ARGUMENT_USER_NAME, InputArgument::REQUIRED, 'The user name.')
             ->addArgument(self::ARGUMENT_USER_EMAIL, InputArgument::REQUIRED, 'The email address.')
-            ->addArgument(self::ARGUMENT_USER_PASSWORD, InputArgument::REQUIRED, 'The password.');
+            ->addArgument(self::ARGUMENT_USER_PASSWORD, InputArgument::REQUIRED, 'The password.')
+            ->addOption(self::OPTION_USER_ACTIVATE, 'a', InputArgument::OPTIONAL, 'Activate the user', false);
     }
 
     /**
@@ -53,12 +56,13 @@ class CreateCommand extends KoalityEngineCommand
             'userName' => $input->getArgument(self::ARGUMENT_USER_NAME),
             'email' => $input->getArgument(self::ARGUMENT_USER_EMAIL),
             'password' => $input->getArgument(self::ARGUMENT_USER_PASSWORD),
+            'activate' => (bool)$input->getOption(self::OPTION_USER_ACTIVATE)
         ];
 
         $result = $repo->createUser($applicationId, $arguments);
 
-        var_dump($result);
+        $userId = $result['user']['id'];
 
-        $output->writeln("\n <info>Successfully created user with id " . $userId . ".</info>");
+        $output->writeln("\n <info>Successfully created user with id " . $userId . ".</info>\n");
     }
 }
